@@ -1,0 +1,60 @@
+/* Some generic style to make the page look nice - not required */
+
+.Center
+{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  
+}
+.ak{
+    
+    color: blue;
+
+}
+  button {
+    
+    display: block;
+    margin-top: 100px;
+  }
+  
+  /* GOOGLE SIGN IN BUTTON */
+  
+  .googleSignIn {
+    border: none;
+      border-radius: 2px;
+      background-color: #4285f4;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.24), 0 0 1px 0 rgba(0, 0, 0, 0.12);
+    border: none;
+    display: flex;
+    padding: 1px;
+      color: #FFF;
+   background: #3367D6;}
+  
+  googleSignIn:hover 
+  {box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);}
+  
+  .googleSignIn--white {
+    background: #FFF;
+    color: rgba(0,0,0,0.54);
+     background: #EEEEEE;
+  }
+  
+  .googleSignIn:disabled {
+    background: rgba(0,0,0,0.08);
+    color: rgba(0,0,0,0.4);
+    box-shadow: none;
+  }
+  
+  .googleSignIn__text {
+    padding: 11px;
+    font-family: "Roboto";
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      text-align: left;
+    white-space: nowrap;
+  }
