@@ -12,20 +12,34 @@ export default class Googlelogin extends Component {
         photourl:"",
       
     }
+    postdata =async()=>{
+      try {
+        const response = await Userfinder.post("/", {
+          email:this.state.username,
+         });
+         AuthenticationService.registerSucessfullLogin(this.state.username,this.state.photourl,"Employee");
+         this.props.history.push(`/chatbot`)
+        console.log(response.data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
     fetchData = async () => {
       try {
-        const response = await Userfinder.get(`/api/v1/userdetails/${this.state.username}`);
+        const response = await Userfinder.get(`/${this.state.username}`);
         console.log(response.data.data);
         console.log(this.state.username);
         const a=response.data.data
            if( JSON.stringify(a) === '{}')
            {
              console.log("Inside the Postblock")
-            axios.post("http://localhost:3006/api/v1/user",{
+
+             this.postdata();
+            /*axios.post("http://localhost:3006/api/v1/user",{
               email:this.state.username,
                  })
                  AuthenticationService.registerSucessfullLogin(this.state.username,this.state.photourl,"Employee");
-                 this.props.history.push(`/chatbot`)  
+                 this.props.history.push(`/chatbot`)  */
            }
         console.log(response.data.data);
         console.log(response.data.data.user.acessrole);
