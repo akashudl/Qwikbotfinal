@@ -30,7 +30,7 @@ catch(err)
  
 });
 //get one email id
-app.get("/api/v1/userdetails/:email", async(req,res)=>{
+app.get("/api/v1/user/:email", async(req,res)=>{
     console.log(req.params.email);
     try{   
     const result= await db.query("select * from qwikbotsredeatils where email =$1",[req.params.email]);//you have to use ''when the data is send  email ='${re.params.email}'from the db.query 
@@ -71,7 +71,7 @@ app.post("/api/v1/user", async (req, res) => {
     }
   });
   //update Request
-app.put("/api/v1/restaurants/:id", async (req, res) => {
+app.put("/api/v1/user/:id", async (req, res) => {
   try {
     const results = await db.query(
       "UPDATE qwikbotsredeatils  SET acessrole= $1  where uid = $2 returning *",
