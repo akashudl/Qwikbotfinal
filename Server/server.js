@@ -8,11 +8,17 @@ const app=express()
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 //get al data from database
 app.get("/api/v1/userdetails", async(req,res)=>{
   console.log(req.params.email);
   try{   
-  const result= await db.query("select * from qwikbotsredeatils");//you have to use ''when the data is send  email ='${re.params.email}'from the db.query 
+  const result= await db.query("select * from qwikbotsredetails");//you have to use ''when the data is send  email ='${re.params.email}'from the db.query 
   //and the which i have use can protect from sql injection 
   console.log(result.rows);
 
@@ -30,10 +36,10 @@ catch(err)
  
 });
 //get one email id
-app.get("/api/v1/user/:email", async(req,res)=>{
+app.get("/api/v1/userdetails/:email", async(req,res)=>{
     console.log(req.params.email);
     try{   
-    const result= await db.query("select * from qwikbotsredeatils where email =$1",[req.params.email]);//you have to use ''when the data is send  email ='${re.params.email}'from the db.query 
+    const result= await db.query("select * from qwikbotsredetails where email =$1",[req.params.email]);//you have to use ''when the data is send  email ='${re.params.email}'from the db.query 
     //and the which i have use can protect from sql injection 
     console.log(result.rows[0]);
 
@@ -56,7 +62,7 @@ app.post("/api/v1/user", async (req, res) => {
   
     try {
       const results = await db.query(
-        "INSERT INTO qwikbotsredeatils (email) values ($1) returning *",
+        "INSERT INTO qwikbotsredetails (email) values ($1) returning *",
         [req.body.email]
 );
       console.log(results);
@@ -71,7 +77,7 @@ app.post("/api/v1/user", async (req, res) => {
     }
   });
   //update Request
-app.put("/api/v1/user/:id", async (req, res) => {
+app.put("/api/v1/restaurants/:id", async (req, res) => {
   try {
     const results = await db.query(
       "UPDATE qwikbotsredeatils  SET acessrole= $1  where uid = $2 returning *",
@@ -111,8 +117,12 @@ app.post("/api/v1/userchatdetails", async (req, res) => {
 });
 
 
-const port =process.env.PORT ||3001;
+const port =process.env.PORT ||3001
 app.listen(port,()=>
 {
     console.log(`Server is ready and listening to port ${port} `);
 })
+
+
+
+
