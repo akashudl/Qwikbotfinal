@@ -15,7 +15,7 @@ export default class Admin extends Component {
     componentDidMount() 
     { 
       
-     axios.get("http://localhost:3006/api/v1/userdetails").then(response=>{
+     axios.get("http://172.16.7.249:3008/api/v1/userdetails").then(response=>{
        this.setState({userInfo:response.data.data.user})
        console.log(response);
       });
