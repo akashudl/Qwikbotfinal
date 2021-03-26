@@ -12,41 +12,29 @@ export default class Googlelogin extends Component {
         photourl:"",
       
     }
-    postdata =async()=>{
-      try {
-        const response = await Userfinder.post("/", {
-          email:this.state.username,
-         });
-         AuthenticationService.registerSucessfullLogin(this.state.username,this.state.photourl,"Employee");
-         this.props.history.push(`/chatbot`)
-        console.log(response.data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    }
     fetchData = async () => {
       try {
-        const response = await Userfinder.get(`/${this.state.username}`);
+        const response = await Userfinder.get(`/api/v1/userdetails/${this.state.username}`);
         console.log(response.data.data);
         console.log(this.state.username);
         const a=response.data.data
            if( JSON.stringify(a) === '{}')
            {
              console.log("Inside the Postblock")
-
-             this.postdata();
-            /*axios.post("http://localhost:3006/api/v1/user",{
+            axios.post("http://172.16.7.249:3008/api/v1/user",{
               email:this.state.username,
                  })
                  AuthenticationService.registerSucessfullLogin(this.state.username,this.state.photourl,"Employee");
-                 this.props.history.push(`/chatbot`)  */
+                 this.props.history.push(`/chatbot`)  
            }
         console.log(response.data.data);
         console.log(response.data.data.user.acessrole);
        const acess=response.data.data.user.acessrole;
         AuthenticationService.registerSucessfullLogin(this.state.username,this.state.photourl,acess);
          this.props.history.push(`/chatbot`)  
-      } catch (err) {}
+      } catch (err) {
+           console.log(err);
+               }
     };
     componentDidMount()
     {
@@ -88,7 +76,7 @@ export default class Googlelogin extends Component {
         return (
             <div className="Center">
                 <GoogleLogin
-                 clientId="245509110223-s5tr34nmrqccfdlbp1ceavjh55294169.apps.googleusercontent.com"
+                 clientId="245509110223-h0har8urr1ina61c4on3q2u977eubddm.apps.googleusercontent.com"
                 onSuccess={this.responseGoogle}
                 
                 onFailure={this.responseGoogle}
