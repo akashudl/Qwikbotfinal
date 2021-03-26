@@ -85,7 +85,7 @@ class LexChatBot extends React.Component {
            console.log();
           if(data.sessionAttributes.finalresponse=="yes")
           { 
-          axios.post("http://localhost:3006/api/v1/userchatdetails",{
+          axios.post("http://172.16.7.249:3008/api/v1/userchatdetails",{
           email:email,
               acessrole:getrole,
               command_typed:this.state.mess,
