@@ -21,7 +21,7 @@ export default class Googlelogin extends Component {
            if( JSON.stringify(a) === '{}')
            {
              console.log("Inside the Postblock")
-            axios.post("http://172.16.7.249:3008/api/v1/user",{
+            axios.post("http://172.16.7.249:3006/api/v1/user",{
               email:this.state.username,
                  })
                  AuthenticationService.registerSucessfullLogin(this.state.username,this.state.photourl,"Employee");
