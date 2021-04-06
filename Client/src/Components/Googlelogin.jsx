@@ -76,7 +76,7 @@ export default class Googlelogin extends Component {
         return (
             <div className="Center">
                 <GoogleLogin
-                 clientId="245509110223-h0har8urr1ina61c4on3q2u977eubddm.apps.googleusercontent.com"
+                 clientId="245509110223-ouhg2igvajgblacjbqimutqgtphcosac.apps.googleusercontent.com"
                 onSuccess={this.responseGoogle}
                 
                 onFailure={this.responseGoogle}
